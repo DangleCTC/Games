@@ -1,22 +1,39 @@
 body{
   min-height: 100vh;
-  position: relative;
+  width:100%;
   display:flex;
   justify-content: center;
   align-items: center;
-  background:#000;
+  background:      repeating-linear-gradient(90deg, transparent, transparent 50px,
+        rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+        transparent 56px, transparent 63px,
+        rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+        transparent 69px, transparent 116px,
+        rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+      repeating-linear-gradient(0deg, transparent, transparent 50px,
+        rgba(255, 127, 0, 0.25) 50px, rgba(255, 127, 0, 0.25) 56px,
+        transparent 56px, transparent 63px,
+        rgba(255, 127, 0, 0.25) 63px, rgba(255, 127, 0, 0.25) 69px,
+        transparent 69px, transparent 116px,
+        rgba(255, 206, 0, 0.25) 116px, rgba(255, 206, 0, 0.25) 166px),
+      repeating-linear-gradient(-45deg, transparent, transparent 5px,
+        rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px),
+      repeating-linear-gradient(45deg, transparent, transparent 5px,
+        rgba(143, 77, 63, 0.25) 5px, rgba(143, 77, 63, 0.25) 10px);
   border:transparent;
   overflow:hidden;
   font-family:  sans-serif;
+  box-sizing: border-box;
+  position: relative;
 }
 
 /*--------------------------------------------------------------------------------------
 
-                                            BLADES 
+                                            BLADES   
 ----------------------------------------------------------------------------------*/
 
 /* FIRST BLADE */
-.op{
+a{
   position: absolute;
   width:60px;
   height:60px;
@@ -30,12 +47,12 @@ body{
   border-radius: 30px;
 }
 
-.op:hover{
+a:hover{
   animation: animate 8s linear infinite;     
 }
 
 /* this is setting the z index to - so its behind the original, then bigger by -5  */
-.op:before{
+a:before{
   content:'';
   position: absolute;
   top: -5px;
@@ -43,34 +60,35 @@ body{
   bottom:-5px;
   left:-5px;
   z-index: -1; 
-  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  background-size: 400%;
+  background: linear-gradient(90deg, #000000, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 500%;
   border-radius: 40px;
-  filter:blur(20px) ;
+  filter:blur(18px) ;
   opacity: 0;
   transition:.7s;
 }
 
-.op:hover:before{
+a:hover:before{
   animation: animate 5s linear infinite;
-  filter:blur(40px); 
+  filter:blur(35px); 
   opacity:1;
 }    
 
-.op:focus{ 
-  animation: spin 3s 2s linear infinite;
+a:focus{ 
+  animation: spin 9s 2s linear infinite;
   position: absolute;
   width: 2%;
-  height:10px;
+  height:15px;
   background-size: 50%;
   border-radius: 40px;   
-  filter:blur(15px) ;
+  filter:blur(35%) ;
   opacity:1;
   transition:2s ; 
+  z-index: 1; 
 }
 
-.op:focus:hover{
-  animation: animate 1.5s alternate-reverse infinite;
+a:focus:hover{
+  animation: animate 1.5s alternate-reverse initial;
   position: absolute;
   height: 22px;
   width:110%;
@@ -79,39 +97,398 @@ body{
   filter:blur(0px) ;
   transition:2s; /* how long to get to animation after clicked*/
 }
+@keyframes spin {
+  0%{
+    width: 0%;
+    height:0px;
+
+    transform: rotate(360deg);
+  }
+  50%{
+      width: 90%;
+      height:50px;
+        transform: rotate(20deg);
+  }
+  100%{         
+      width: 0%;
+      height:0px;
+
+      transform: rotate(-200deg);
+  }
+}
+
+
+
+/* SECOND BLADE */
+
+
+
+#blade2{
+  position: absolute;
+  width:0%;
+  height:0%;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 100%;
+  border-radius: 25px;
+  transition:5s; 
+  z-index: 2;
+}
+
+#blade2.callthis{
+  position: absolute;
+ animation: spin2 7s 1s linear infinite;
+  background: linear-gradient(-180deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  border-radius: 25px;
+  transition:5s;
+}
+
+/* good trans */
+
+
+@keyframes spin2 {
+    from {
+        width: 400px;
+        height:10%;
+        transform:rotate(360deg);
+        background-position: 0%;
+    }
+    to {
+        width: 1000px;
+        height:10px;
+        transform:rotate(360deg);
+        background-position: 500%;
+    }
+}
+
+
+/* @keyframes spin2 {
+    0%{
+        width: 400px;
+        height:10%;
+        transform:rotate(360deg);
+        background-position: 0%;
+    }
+    75% {
+        width: 1000px;
+        height:10px;
+        transform:rotate(360deg);
+        background-position: 500%;
+    }
+        100% {
+        width: 400px;
+        height:10%;
+        transform:rotate(360deg);
+        background-position: 500%;
+    }
+} */
+
+
+
+
+
+/* THIRD */
+#blade3{
+  position: absolute;
+  widows:0%;
+  height:0%;
+  background: linear-gradient(90deg, #08f7fe, #09fbd3, #fe53bb, #f5d300);
+  background-size: 100%;
+  border-radius: 25px;
+  transition:5s; 
+  z-index: 3;
+}
+
+#blade3.callthis3{
+  position: absolute;
+ animation: spin2 6s 1s alternate-reverse infinite;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  border-radius: 25px;
+  transition:4s;
+}
+
+/* 4TH */
+
+#blade4{
+  position: absolute;
+  height:20px;
+  background: linear-gradient(90deg, #08f7fe, #09fbd3, #fe53bb, #f5d300);
+  background-size: 0%;
+  border-radius: 15px;
+  transition:5s; 
+  z-index: 4;
+}
+
+#blade4.callthis4{
+  box-shadow: 5px 5px 30px 5px #7122fa;
+  position: absolute;
+ animation: spingood 20s 1s linear infinite;
+  background: linear-gradient(120deg, #ffacfc, #f148fb, #7122fa, #560a86);
+  border-radius: 80%;
+  background-position: 100%;
+  transition:1s;
+}
+
+#blade2:hover{
+  animation: animate 1.5s alternate-reverse initial;
+  position: absolute;
+  height: 22px;
+  width:110%;
+  background-size: 50%;
+  border-radius: 40px;
+  filter:blur(5px) ;
+  transition:1s; /* how long to get to animation after clicked*/
+}
+/* BLADE 5 */
+
+#blade5{
+  position: absolute;
+
+  height:20px;
+  background: linear-gradient(90deg, #08f7fe, #09fbd3, #fe53bb, #f5d300);
+  background-size: 0%;
+  border-radius: 15px;
+  transition:1s; 
+  z-index: 5;
+}
+
+#blade5.callthis5{
+  box-shadow: 0px 0px 19px 2px rgb(255, 255, 255);
+  position: absolute;
+ animation: spingood 10s 1s linear infinite;
+  background: linear-gradient(360deg, #08f7fe, #09fbd3, #fe53bb, #f5d300);
+  border-radius: 80%;
+  background-position: 100%;
+  transition:1s;
+}
+
+
+@keyframes spingood {
+  0%{
+    width: 25000px;
+    height:3px;
+    transform: rotate(0deg);
+    background-position: 0%;
+  }
+  10%{
+      width:150px;
+      height:8px;
+        transform: rotate(0deg);    
+  }
+  15%{
+      width: 2000px;
+      height:5px;
+        transform: rotate(230deg);
+  }  20%{
+      width: 2000px;
+      height:5px;
+        transform: rotate(360deg);
+  }
+  35%
+  {
+      width: 1500px;
+      height:7px;
+        transform: rotate(360deg);
+  }50%{
+      width: 390px;
+      height:6px;
+        transform: rotate(0deg);
+  }
+  50%{
+      width: 2000px;
+      height:4px;
+        transform: rotate(180deg);
+  }
+    75%{
+      width: 300;
+      height:2px;
+        transform: rotate(360deg);   
+  }
+      80%{
+
+      width: 400;
+      height:8px;
+      border-radius: 50%;
+      transform: rotate(0deg);
+      background-position: 400%;    
+  }
+        95%{
+      width: 100;
+      height:8px;
+      border-radius: 50%;
+      transform: rotate(0deg);
+      background-position: 400%;
+      opacity:1;  
+  }
+  100%{         
+    width: 0;
+    height:0px;
+      border-radius: 50%;
+      transform: rotate(0deg);
+      background-position: 400%; 
+       opacity:1;
+  }
+};
+ 
+@keyframes spin4 {
+  0%{
+    width: 300px;
+    height:0px;
+    transform: rotate(360deg);
+    background-position: 0%;
+  }
+  10%{
+      width:2000px;
+      height:8px;
+        transform: rotate(0deg);    
+  }
+  15%{
+      width: 2000px;
+      height:5px;
+        transform: rotate(230deg);
+  }  20%{
+      width: 2000px;
+      height:5px;
+        transform: rotate(360deg);
+  }
+  35%
+  {
+      width: 1500px;
+      height:7px;
+        transform: rotate(360deg);
+  }50%{
+      width: 390px;
+      height:6px;
+        transform: rotate(0deg);
+  }
+  50%{
+      width: 2000px;
+      height:4px;
+        transform: rotate(-20deg);
+  }
+    75%{
+      width: 300;
+      height:2px;
+        transform: rotate(360deg);   
+  }
+      80%{
+
+      width: 400;
+      height:8px;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      background-position: 400%;    
+  }
+        95%{
+      width: 100;
+      height:8px;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      background-position: 400%;
+      opacity:1;  
+  }
+  100%{         
+    width: 0;
+    height:0px;
+      border-radius: 50%;
+      transform: rotate(360deg);
+      background-position: 400%; 
+       opacity:.6;
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
 
 /*--------------------------------------------------------------------------------------
 
-                        Loosen up my buttons, baby.
+                        Loosen up my buttons, baby.. and icons
 
 ----------------------------------------------------------------------------------*/
+
 .btn{
-  position: absolute;
-  top:94%;
-  left:92%;
+  margin:0px 10px 0px 0px;
   width:auto;
   height:auto;
   padding:9px 20px 9px 20px; 
-  background:#8a2418;
   border: transparent;
   border-radius: .3rem;
   justify-content: center;
   color:white;
   font-size: .90rem;
-  font-weight: none;
+  font-weight: 550;
   /* text-shadow:1px -1px .5px #000, -1px -1px .5px #000,-1px 1px .5px #000,
   1px 1px .5px #000; */
   outline:none;
 }
 
-.btn:hover{
-  background:#c23222;
+#resetBtn:before{
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  content:'';
+  position: absolute;
+  top: -1px;
+  right:-1px;
+  bottom:-1px;
+  left:-1px;
+  z-index: -1; 
+  background-size: 500%;
+   border-radius: .3rem;
+  filter:blur(20px) ;
+  opacity: 0;
+  transition:.1s;
 }
+#resetBtn:hover{
+  animation: animate 8s linear infinite;     
+}
+#resetBtn.btn:hover:before{
+  animation: animate 8s linear infinite;
+
+  opacity:1;
+}   
+
 
 .btn:active{
     background:#8a2418;
-    position: absolute;
+
 }
+.icons{
+  color:white;
+}
+.nav-btns{
+  box-sizing: border-box;
+  position: absolute;
+  top:95%;
+  left:79%;
+}
+
+#resetBtn{
+  display: inline-block;
+  background:#000000;
+}
+
+#homeBtn{
+  display: inline-block;
+  background:rgb(0, 0, 0);
+}
+
+#howtoplayBtn{
+  display: inline-block;
+  background:#ecbe4a;
+}
+button span{
+  position: relative;
+  bottom: 5px;
+}
+
+
+
 
 
 /*--------------------------------------------------------------------------------------
@@ -142,7 +519,7 @@ body{
   0px 0px 0px #000,
   -20px -60px 2.5px  rgb(0, 0, 0),/* first shadow */
   10px -39px 2.5px  rgb(0, 0, 0),/* 2nd shadow from top */
-  -5px 1px 7px rgb(0, 0, 0) ;/* Main shadow */         
+  -6px 1px 5px rgb(0, 0, 0) ;/* Main shadow */         
 }
 
 
@@ -174,7 +551,7 @@ body{
 }
 @keyframes spin {
   0%{
-    width: 10%;
+    width: 0%;
     height:0px;
     background-position: 0%;
     transform: rotate(360deg);
@@ -182,14 +559,17 @@ body{
   50%{
       width: 90%;
       height:50px;
+        transform: rotate(20deg);
   }
   100%{         
-      width: 10%;
+      width: 0%;
       height:0px;
       background-position: 400%; 
-      transform: rotate(-360deg);
+      transform: rotate(-200deg);
   }
 }
+
+
 
 @keyframes animate{
   0%{
@@ -199,6 +579,35 @@ body{
         background-position: 400%;
   }
 }
+
+@keyframes buttonglow{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+        background-position: 400%;
+  }
+}
+
+
+
+@keyframes spin3 {
+    from {
+        width: 5%;
+        height:5%;
+        transform:rotate(0deg);
+        background-position: 0%;
+    }
+    to {
+        width: 300px;
+        height:15px;
+        transform:rotate(360deg);
+        background-position: 400%;
+    }
+}
+
+
+
 
 /* ----------------------------------------------------------------------------------------------------------
 
@@ -257,4 +666,12 @@ body{
 /*
 transition-duration: 3s, 1s;
                    : (duration) (duration before start)?
+
+
+
+Position: ABSOLUTE vs. RELATIVE
+  - By default position is set to static.
+  - RELATIVE: *applying it to that element* moving an element relative to its current position, without changing the layout around it, thus leaving a gap of where it would have been
+
+  - ABSOLUTE: *applying it to that element* the moved element now will not leave any gaps, thus displaying *in front of* elements around it.
 */

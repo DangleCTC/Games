@@ -1,4 +1,8 @@
 var slideSource = document.getElementById('slideSource');
+var slideSource2 = document.getElementById('slideSource2');
+var slideSource3 = document.getElementById('slideSource3');
+var slideSource4 = document.getElementById('slideSource4');
+var slideSource5 = document.getElementById('slideSource5');
 
 
 var resetBtn = document.getElementById('resetBtn');
@@ -16,19 +20,56 @@ var resetBtn = document.getElementById('resetBtn');
 
 document.getElementById('handle').onclick = function () {
     slideSource.classList.add('fade');
+    blade3.classList.add('callthis3');
+    blade2.classList.add('callthis');
+    blade4.classList.add('callthis4'); 
+    // blade5.classList.add('callthis5');
 }; 
-// $(document).ready(function () {
-//     $("#resetBtn").click(function () {
-//         location.reload(true);
-//     });
+
+// GOOD HOVER FUNCTION************************************
+// setInterval(function () {
+//     var $sample = $("#blade2");
+//     if ($sample.is(":hover")) {
+//         blade2.classList.add('callthis');
+//     }
 // });
-
-
 
 // THIS ONE
 // document.getElementById('clicked').onclick = function () {
 //     slideSource.classList.add('fadeIn');
 // };
+
+
+
+
+
+
+
+
+
+
+
+
+// document.getElementById('blade2').onclick = function () {
+//     blade2.classList.add('callthis');
+// }; 
+
+
+
+// $("blade2").hover(function () {
+//     slideSource2.classList.add('callthis');
+// });
+
+
+
+
+
+
+
+
+
+
+
 
 // $(document).ready(function () {
 //     console.log("ready!");
@@ -77,3 +118,4 @@ document.getElementById('handle').onclick = function () {
 
 //     else( )
 // });
+
